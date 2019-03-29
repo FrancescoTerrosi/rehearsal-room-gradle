@@ -5,9 +5,19 @@ sudo: required
 jdk:
   - oraclejdk8
 
+addons:
+  sonarcloud:
+    organization: francescoterrosi-github
+    token:
+      secure: "NorcnpKheVRMEtbuBhgQfAMboj21UP4U9l8vAQ5QHdpwxudboNvDg6yWw5bPyiryZA0HlaU8rGqi+vDNMIhD7hrGYi6JcuWhO6k35p/j1UrKa6A8A7DSghtdN63el2+rGpRnia9KnDIpA4YHQ38QAvKiTgG22O5jsyb1/UZYb2dMUIF6yCeHAfCbg3iXfxemQT4HWPSBQuCIEh+OhU2VUfh/QdcB4MRD4Bfe+vjPxgs/RXPB8I9lHP9BYTBkQAOc/Wcf9hSKuV1t/f+Dj1lJsNXTXks0JtjZ4nDcP4t0TndrSsJqfL487RtVz+RZXgKNU2S8wXCpBptPx4gELmPq/T8i6eXpv/68KTng1g7dlH1aD19vrZsP8acYGmwhms89PrVVuN6b7MYpf7tqgoVvr7ToJm3w43OEl874Tf+/g6djwVlvXobsJIKTrEqjYAQfK9mksqW6TuE4y6DQYIGGUtH1ZAAKKBvTJ/BOOci7v9ncbWIoQOYTkUcL/6TeMKKUO/6/tGBvHkensrcIq3Z9edb1ip1Q3ioY86HXd7FkMY3ayUe95h0hr4Q9tzIBv7nzZ/mI56RpeYsW2p+WURzlD8qUUmd9ysV6H0zeC3weuTuI/8vtvM57ZxA6Ybdfi/PC4UaKV0QNZVMfHb0Ea/f7Jfld9WFRoF9qGEKGa89PF0o="
+
 cache:
   directories:
     - '$HOME/.m2/repository'
 
 script:
   -  gradle build
+
+after_success:
+  - ./gradlew jacocoTestReport coveralls
+  - ./gradlew sonarqube
