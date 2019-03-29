@@ -19,7 +19,7 @@ jacocoTestReport {
 }
 
 coveralls {
-    jacocoReportPath 'build/reports/jacoco/jacocoTestReport/test/jacocoTestReport.xml'
+    jacocoReportPath '$buildDir/jacoco/jacocoTestReport/test/jacocoTestReport.xml'
 }
 
 test.finalizedBy jacocoTestReport
