@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:security="http://www.springframework.org/security/tags">
+
+<head>
+<title>Login Page</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="/css/loginRegister.css">
+</head>
+<body onload='document.loginForm.username.focus();'>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Schedule your Rehearsals!</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li><a href="/login">Login</a></li>
+					<li><a href="/register">Register</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<form name='loginForm' th:action="@{/login}" method="post">
+
+			<div id="error" th:if="${error}">
+				<font color="red"><span th:text="${error}"></span></font><br /> <br />
+			</div>
+			<fieldset>
+				<h2>
+					<span class="label label-info">User:</span>
+				</h2>
+				<input type="text" id="username" name="username" /> <br>
+				<h2>
+					<span class="label label-info">Password:</span>
+				</h2>
+				<input type="password" id="password" name="password" />
+				<div id="loginButton" class="container">
+					<button type="submit" class="btn btn-primary" id="submit"
+						name="submit">Login</button>
+				</div>
+			</fieldset>
+		</form>
+		<form id="goBackForm" method="get" action="/">
+			<button type="submit" class="btn btn-danger">Go back</button>
+		</form>
+	</div>
+</body>
+</html>
