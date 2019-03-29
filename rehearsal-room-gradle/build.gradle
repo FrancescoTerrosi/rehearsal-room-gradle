@@ -22,8 +22,6 @@ coveralls {
     jacocoReportPath '$buildDir/jacoco/jacocoTestReport/test/jacocoTestReport.xml'
 }
 
-test.finalizedBy jacocoTestReport
-
 apply plugin: 'io.spring.dependency-management'
 
 group = 'org.unifi.ft'
