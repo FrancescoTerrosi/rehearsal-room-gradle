@@ -16,4 +16,4 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  -  gradle build coveralls:report sonar:sonar
+  -  gradle build coveralls
