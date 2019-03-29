@@ -10,4 +10,4 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  -  gradle build
+  -  gradle build coveralls:report
