@@ -16,7 +16,7 @@ cache:
     - '$HOME/.m2/repository'
 
 script:
-  - gradle build 
+  - ./gradlew build 
 
 after_success:
   - ./gradlew jacocoTestReport coveralls
