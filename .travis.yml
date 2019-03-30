@@ -18,7 +18,7 @@ cache:
     - '$HOME/.m2/repository'
 
 before_script:
-  - chmod a+x gradlew
+  - chmod a+x ./gradlew
 
 script:
   - ./gradlew build 
