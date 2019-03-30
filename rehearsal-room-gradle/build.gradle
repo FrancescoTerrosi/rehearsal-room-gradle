@@ -23,6 +23,7 @@ coveralls {
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'jacoco'
 
 group = 'org.unifi.ft'
 version = '0.0.1-SNAPSHOT'
