@@ -17,4 +17,4 @@ script:
   - gradle build 
 
 after_success:
-  - gradle jacocoTestReport coveralls
+  - gradle test jacocoTestReport coveralls
