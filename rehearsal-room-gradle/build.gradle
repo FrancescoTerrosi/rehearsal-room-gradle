@@ -6,11 +6,6 @@ plugins {
 	id "org.sonarqube" version "2.7"
 }
 
-jacoco {
-    toolVersion = "0.8.3"
-    reportsDir = file("$buildDir/jacoco/jacocoTestReport")
-}
-
 jacocoTestReport {
     reports {
         xml.enabled = true // coveralls plugin depends on xml format report
@@ -18,12 +13,7 @@ jacocoTestReport {
     }
 }
 
-coveralls {
-    jacocoReportPath '$buildDir/jacoco/jacocoTestReport/test/jacocoTestReport.xml'
-}
-
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'jacoco'
 
 group = 'org.unifi.ft'
 version = '0.0.1-SNAPSHOT'
