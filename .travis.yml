@@ -13,6 +13,7 @@ addons:
 
 before_script:
   - cd ./rehearsal-room-gradle
+  - ./gradlew assemble
 
 script:
   - ./gradlew build jacocoTestReport coveralls sonarqube
