@@ -11,4 +11,4 @@ addons:
 
 script:
   - cd ./rehearsal-room-gradle
-  - ./gradlew build test
+  - ./gradlew build jacocoTestReport coveralls
