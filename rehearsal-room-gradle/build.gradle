@@ -15,7 +15,7 @@ jacocoTestReport {
 
 sonarqube {
 	properties {
-		property "sonar.exclusion", "org/unifi/ft/rehearsal/model/**, org/unifi/ft/rehearsal/configurations, org/unifi/ft/rehearsal/exceptions/**"
+		property "sonar.exclusions", ["org/unifi/ft/rehearsal/model/**", "org/unifi/ft/rehearsal/configurations", "org/unifi/ft/rehearsal/exceptions/**"]
 		property "sonar.coverage.exclusion", "org/unifi/ft/rehearsal/RehearsalRoomGradleApplication.java, org/unifi/ft/rehearsal/model/**, org/unifi/ft/rehearsal/configurations, org/unifi/ft/rehearsal/exceptions/**, org/unifi/ft/rehearsal/repository/mongo/**"
 	}
 }
