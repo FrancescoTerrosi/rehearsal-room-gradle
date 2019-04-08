@@ -44,6 +44,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'joda-time:joda-time:2.10.1'
+	compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7-1'
+	compile group: 'org.webjars', name: 'webjars-locator', version: '0.36'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
@@ -60,5 +62,7 @@ dependencies {
 }
 
 apply from: "$rootDir/e2etest.gradle"
+
 apply from: "$rootDir/itest.gradle"
+tasks.e2eTest.mustRunAfter tasks.integTest
 apply plugin: 'io.spring.dependency-management'

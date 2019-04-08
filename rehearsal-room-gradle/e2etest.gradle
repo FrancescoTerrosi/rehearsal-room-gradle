@@ -37,6 +37,5 @@ task e2eTest(type: Test) {
 	classpath = sourceSets.e2eTest.runtimeClasspath 
 
 	e2eTest.outputs.upToDateWhen {false}
-	mustRunAfter tasks.test
 	check.dependsOn e2eTest
 }

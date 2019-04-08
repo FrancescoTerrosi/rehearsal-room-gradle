@@ -2,8 +2,6 @@ package org.unifi.ft.rehearsal.features;
 
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.unifi.ft.rehearsal.RehearsalRoomGradleApplication;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
