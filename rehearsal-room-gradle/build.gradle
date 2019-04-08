@@ -36,7 +36,10 @@ test {
 		events "failed", "standardOut", "standardError"
 	}
 }
+
 test.outputs.upToDateWhen {false}
+test.finalizedBy tasks.jacocoTestReport
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
