@@ -40,7 +40,4 @@ before_script:
   - cd ./rehearsal-room-gradle
 
 script:
-  - ./gradlew build jacocoTestReport
-
-after_success:
-  - ./gradlew coveralls sonarqube
+  - ./gradlew build jacocoTestReport coveralls sonarqube
