@@ -46,23 +46,18 @@ dependencies {
 	implementation 'joda-time:joda-time:2.10.1'
 	compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7-1'
 	compile group: 'org.webjars', name: 'webjars-locator', version: '0.36'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+	
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
 	testCompile("io.github.bonigarcia:webdrivermanager:3.4.0")
 	testCompile 'org.springframework.boot:spring-boot-starter-test'
 	testCompile 'org.springframework.security:spring-security-test'
 	
-    testCompile 'info.cukes:cucumber-java8:1.2.2'
+    testCompile 'info.cukes:cucumber-java8:1.2.4'
 	testCompile group: 'info.cukes', name: 'cucumber-spring', version: '1.2.4'
-	testImplementation 'io.cucumber:cucumber-java:4.2.6'
-    testImplementation 'io.cucumber:cucumber-junit:4.2.6'
-	testCompile 'io.cucumber:cucumber-java:4.2.6'
-    testCompile 'io.cucumber:cucumber-junit:4.2.6'
+    testCompile 'info.cukes:cucumber-junit:1.2.4'
 }
 
-apply from: "$rootDir/e2etest.gradle"
 
 apply from: "$rootDir/itest.gradle"
-tasks.e2eTest.mustRunAfter tasks.integTest
+apply from: "$rootDir/e2etest.gradle"
 apply plugin: 'io.spring.dependency-management'
