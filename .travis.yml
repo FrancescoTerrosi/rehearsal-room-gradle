@@ -27,10 +27,16 @@ install: # Install ChromeDriver (64bits; replace 64 with 32 for 32bits).
   - sudo chmod +x /usr/local/share/chromedriver
   - sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
 cache:
   directories:
-    - '$HOME/.m2/repository'
-    - '$HOME/.sonar/cache'
+    - $HOME/.m2/repository
+    - $HOME/.sonar/cache
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 
 before_script:
   - export DISPLAY=:99.0
