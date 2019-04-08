@@ -43,4 +43,4 @@ script:
   - ./gradlew build
 
 after_success:
-  - jacocoTestReport coveralls sonarqube
+  - ./gradlew jacocoTestReport coveralls sonarqube
