@@ -19,10 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.unifi.ft.rehearsal.model.Generated;
 import org.unifi.ft.rehearsal.services.BandService;
 
-@Generated
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -78,8 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		authProvider.setPasswordEncoder(passwordEncoder());
 		return authProvider;
 	}
-	
-	@Generated
+
 	private class RehearsalAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 		@Override

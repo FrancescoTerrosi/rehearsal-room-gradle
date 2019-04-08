@@ -1,8 +1,5 @@
 package org.unifi.ft.rehearsal.exceptions;
 
-import org.unifi.ft.rehearsal.model.Generated;
-
-@Generated
 public class PasswordNotMatchingException extends IllegalArgumentException {
 
 	private static final long serialVersionUID = 1L;

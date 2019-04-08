@@ -1,8 +1,9 @@
 sourceSets {
 	e2eTest {
-		java.srcDir 'src/e2e/java'
+		java.srcDir 'src/e2eTest/java'
 		resources.srcDir file('src/e2e/resources')
-		compileClasspath += sourceSets.main.runtimeClasspath
+																// grazie a questo eredito le dipendenze da Test
+		compileClasspath += sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
 		runtimeClasspath += output + compileClasspath + configurations.testRuntime
 	}
 }
@@ -10,18 +11,6 @@ sourceSets {
 mongo {
 	port 27017
 	logging 'console'
-}
-
-
-// Dovevo applicare queste dependencies!!
-dependencies {
-    e2eTestCompile 'info.cukes:cucumber-java8:1.2.4'
-	e2eTestCompile group: 'info.cukes', name: 'cucumber-spring', version: '1.2.4'
-    e2eTestCompile 'info.cukes:cucumber-junit:1.2.4'
-	e2eTestCompile 'org.springframework.boot:spring-boot-starter-test'
-	e2eTestCompile 'org.springframework.security:spring-security-test'
-    e2eTestCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
-	e2eTestCompile("io.github.bonigarcia:webdrivermanager:3.4.0")
 }
 
 task e2eTest(type: Test) {
