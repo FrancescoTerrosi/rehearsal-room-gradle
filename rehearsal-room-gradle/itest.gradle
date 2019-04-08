@@ -1,10 +1,10 @@
 sourceSets {
-    integTest {
-        java.srcDir 'src/it/java'
-        resources.srcDir file('src/test/resources')
-        compileClasspath += sourceSets.main.runtimeClasspath
-        runtimeClasspath += output + compileClasspath + configurations.testRuntime
-    }
+	integTest {
+		java.srcDir 'src/it/java'
+		resources.srcDir file('src/test/resources')
+		compileClasspath += sourceSets.main.runtimeClasspath
+		runtimeClasspath += output + compileClasspath + configurations.testRuntime
+	}
 }
 
 mongo {
@@ -19,27 +19,17 @@ dependencies {
 	integTestCompile 'org.springframework.security:spring-security-test'
 }
 
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
-}
-
-
-
 task integTest(type: Test) {
 	runWithMongoDb = true
-    group = LifecycleBasePlugin.VERIFICATION_GROUP
-    description = 'Runs the integration tests.' 
+	description = 'Runs the integration tests.' 
 
-    maxHeapSize = '1024m' 
+	maxHeapSize = '1024m' 
 
-    testClassesDirs = sourceSets.integTest.output.classesDirs
-    classpath = sourceSets.integTest.runtimeClasspath 
+	testClassesDirs = sourceSets.integTest.output.classesDirs
+	classpath = sourceSets.integTest.runtimeClasspath 
 
-    mustRunAfter tasks.test
+	integTest.outputs.upToDateWhen {false}
+	mustRunAfter tasks.test
+	check.dependsOn integTest
 }
 
-integTest.outputs.upToDateWhen {false}
-
-check.dependsOn integTest

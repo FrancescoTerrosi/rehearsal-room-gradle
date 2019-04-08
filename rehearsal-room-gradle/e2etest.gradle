@@ -1,0 +1,42 @@
+sourceSets {
+	e2eTest {
+		java.srcDir 'src/e2e/java'
+		resources.srcDir file('src/e2e/resources')
+		compileClasspath += sourceSets.main.runtimeClasspath
+		runtimeClasspath += output + compileClasspath + configurations.testRuntime
+	}
+}
+
+mongo {
+	port 27017
+	logging 'console'
+}
+
+
+// Dovevo applicare queste dependencies!!
+dependencies {
+    e2eTestCompile 'info.cukes:cucumber-java8:1.2.2'
+    e2eTestCompile 'junit:junit:4.12'
+	e2eTestCompile 'io.cucumber:cucumber-java:4.2.6'
+	e2eTestCompile 'io.cucumber:cucumber-junit:4.2.6'
+	e2eTestCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	e2eTestCompile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	e2eTestCompile 'org.springframework.boot:spring-boot-starter-test'
+	e2eTestCompile 'org.springframework.security:spring-security-test'
+    e2eTestCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '2.41.0'
+	e2eTestCompile("io.github.bonigarcia:webdrivermanager:3.4.0")
+}
+
+task e2eTest(type: Test) {
+	runWithMongoDb = true
+	description = 'Runs end to end tests.' 
+
+	maxHeapSize = '1024m' 
+
+	testClassesDirs = sourceSets.e2eTest.output.classesDirs
+	classpath = sourceSets.e2eTest.runtimeClasspath 
+
+	e2eTest.outputs.upToDateWhen {false}
+	mustRunAfter tasks.test
+	check.dependsOn e2eTest
+}
