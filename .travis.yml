@@ -42,8 +42,8 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - npm i -g npm@^3
   - sleep 3
+  - git fetch --unshallow --quiet
   - cd ./rehearsal-room-gradle
 
 script:
-  - git fetch --unshallow --quiet
   - ./gradlew build jacocoTestReport coveralls sonarqube
