@@ -16,16 +16,6 @@ jacocoTestReport {
 		xml.enabled = true // coveralls plugin depends on xml format report
 		html.enabled = true
 	}
-	afterEvaluate {
-		classDirectories = files(classDirectories.files.collect {
-		fileTree(dir: it, 
-				exclude:	['org/unifi/ft/rehearsal/RehearsalRoomGradleApplication.java',
-							'org/unifi/ft/rehearsal/model/**',
-							'org/unifi/ft/rehearsal/configurations/**',
-							'org/unifi/ft/rehearsal/exceptions/**',
-							'org/unifi/ft/rehearsal/model/**'])
-		})
-	}
 }
 
 sonarqube {
