@@ -45,4 +45,5 @@ before_script:
   - cd ./rehearsal-room-gradle
 
 script:
+  - git fetch --unshallow --quiet
   - ./gradlew build jacocoTestReport coveralls sonarqube
