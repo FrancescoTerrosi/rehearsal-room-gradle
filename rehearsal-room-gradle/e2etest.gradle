@@ -1,6 +1,6 @@
 sourceSets {
 	e2eTest {
-		java.srcDir 'src/e2eTest/java'
+		java.srcDir 'src/e2e/java'
 		resources.srcDir file('src/e2e/resources')
 																// grazie a questo eredito le dipendenze da Test
 		compileClasspath += sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath

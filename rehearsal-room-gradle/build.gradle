@@ -12,6 +12,13 @@ apply from: "$rootDir/itest.gradle"
 apply from: "$rootDir/e2etest.gradle"
 apply plugin: 'io.spring.dependency-management'
 
+test {
+	testLogging {
+		events "failed", "standardOut", "standardError"
+	}
+	test.outputs.upToDateWhen {false}
+}
+
 jacocoTestReport {
 	reports {
 		xml.enabled = true // coveralls plugin depends on xml format report
@@ -25,6 +32,9 @@ sonarqube {
 	}
 }
 
+pitest {
+	targetClasses = ['org.unifi.ft.rehearsal.web.*', 'org.unifi.ft.rehearsal.services.*']
+}
 
 group = 'org.unifi.ft'
 version = '0.0.1-SNAPSHOT'
@@ -35,12 +45,6 @@ repositories {
 	gradlePluginPortal()
 }
 
-test {
-	testLogging {
-		events "failed", "standardOut", "standardError"
-	}
-	test.outputs.upToDateWhen {false}
-}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
